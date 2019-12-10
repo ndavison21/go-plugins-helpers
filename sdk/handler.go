@@ -72,14 +72,15 @@ func (h Handler) ServeUnix(addr string, gid int) error {
 // of docker daemon must be provided. To get default directory, use
 // WindowsDefaultDaemonRootDir() function. On Unix, this parameter is ignored.
 func (h Handler) ServeWindows(addr, pluginName, daemonDir string, pipeConfig *WindowsPipeConfig) error {
-	l, spec, err := newWindowsListener(addr, pluginName, daemonDir, pipeConfig)
-	if err != nil {
-		return err
-	}
-	if spec != "" {
-		defer os.Remove(spec)
-	}
-	return h.Serve(l)
+	return fmt.Errorf("Windows not supported")
+	// l, spec, err := newWindowsListener(addr, pluginName, daemonDir, pipeConfig)
+	// if err != nil {
+	// 	return err
+	// }
+	// if spec != "" {
+	// 	defer os.Remove(spec)
+	// }
+	// return h.Serve(l)
 }
 
 // HandleFunc registers a function to handle a request path with.

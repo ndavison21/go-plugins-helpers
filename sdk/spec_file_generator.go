@@ -25,17 +25,18 @@ func WindowsDefaultDaemonRootDir() string {
 }
 
 func createPluginSpecDirWindows(name, address, daemonRoot string) (string, error) {
-	_, err := os.Stat(daemonRoot)
-	if os.IsNotExist(err) {
-		return "", fmt.Errorf("Deamon root directory must already exist: %s", err)
-	}
+	return "", fmt.Errorf("Windows not supported")
+	// _, err := os.Stat(daemonRoot)
+	// if os.IsNotExist(err) {
+	// 	return "", fmt.Errorf("Deamon root directory must already exist: %s", err)
+	// }
 
-	pluginSpecDir := PluginSpecDir(daemonRoot)
+	// pluginSpecDir := PluginSpecDir(daemonRoot)
 
-	if err := windowsCreateDirectoryWithACL(pluginSpecDir); err != nil {
-		return "", err
-	}
-	return pluginSpecDir, nil
+	// if err := windowsCreateDirectoryWithACL(pluginSpecDir); err != nil {
+	// 	return "", err
+	// }
+	// return pluginSpecDir, nil
 }
 
 func createPluginSpecDirUnix(name, address string) (string, error) {
